@@ -460,6 +460,11 @@ button {
     height: 44px;
     background: #313131 url('../img/arrow.svg') no-repeat calc(50% - 2px) 50% / auto;
     border-radius: 50%;
+    transition: background-color .3s;
+}
+
+.slider-btn:hover {
+    background-color: #FBCE51;
 }
 
 .slider-btn.next {
@@ -546,6 +551,15 @@ input[type="radio"]:checked + label {
 .participants__slide .participant-position,
 .participants__slide .more-info-link {
     font-family: Golos-Text, sans-serif;
+}
+
+.participants__slide .more-info-link {
+    transition: .3s;
+}
+
+.participants__slide .more-info-link:hover {
+    background-color: #3057A2;
+    color: #fff;
 }
 
 .participants-content .slides-number {
