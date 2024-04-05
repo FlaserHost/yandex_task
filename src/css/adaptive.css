@@ -1,8 +1,39 @@
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 1240px) {
+    .stages-grid {
+        grid: 1fr / 1fr;
+    }
+
+    .stages-grid .stage-card:nth-child(3),
+    .stages-grid .stage-card:nth-child(7) {
+        grid-area: initial;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .tournament-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tournament-info > span:first-child {
+        border-right: none;
+        max-width: initial;
+    }
+
+    .tournament-info > :last-child {
+        padding: 12px 12px 12px 0;
+    }
+}
+
+@media screen and (max-width: 790px) {
     .header__content > div,
     .idea-content .text,
     .tournament {
         padding: 0 20px;
+    }
+
+    .idea-content {
+        padding: 20px 0;
     }
 
     .logo-block > img {
@@ -51,6 +82,10 @@
         margin: 24px 0;
     }
 
+    .people-img > img {
+        width: 100%;
+    }
+
     .idea-content p, .tournament > p {
         font-size: 28px;
         line-height: 38px;
@@ -68,20 +103,6 @@
     .game-content {
         align-items: flex-start;
         flex-direction: column;
-    }
-
-    .tournament-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .tournament-info > span:first-child {
-        border-right: none;
-        max-width: initial;
-    }
-
-    .tournament-info > :last-child {
-        padding: 12px 12px 12px 0;
     }
 
     .additional-info > span {

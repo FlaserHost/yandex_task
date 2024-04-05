@@ -212,6 +212,10 @@ button {
     position: relative;
 }
 
+.idea-content {
+    padding: 20px 447px 20px 0;
+}
+
 .text {
     max-width: 764px;
 }
