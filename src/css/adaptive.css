@@ -1,0 +1,144 @@
+@media screen and (max-width: 376px) {
+    .header__content > div,
+    .idea-content .text,
+    .tournament {
+        padding: 0 20px;
+    }
+
+    .logo-block > img {
+        width: 213px;
+        height: 32px;
+        object-fit: contain;
+    }
+
+    .header__content p:nth-of-type(-n + 2) {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .header__content p:nth-of-type(1) {
+        margin-top: 40px;
+    }
+
+    .header__content p:nth-of-type(3) {
+        text-align: left;
+        margin: 24px 0 32px;
+    }
+
+    .header-link {
+        width: 100%;
+        padding: 0 0 3px 0;
+        height: 47px;
+    }
+
+    .header-link.more-link {
+        background-color: rgba(255, 255, 255, .8);
+        border-color: rgba(255, 255, 255, .8);
+    }
+
+    .header {
+        height: 824px;
+    }
+
+    .header__content {
+        background: url(../img/horses.png) no-repeat 72% calc(100% + 31px) / 1000px 533px;
+    }
+
+    .people-img {
+        position: static;
+        min-width: initial;
+        min-height: initial;
+        margin: 24px 0;
+    }
+
+    .idea-content p, .tournament > p {
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .support__idea {
+        margin-top: 48px;
+    }
+
+    .game-content figure {
+        min-width: 375px;
+        min-height: initial;
+    }
+
+    .game-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .tournament-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tournament-info > span:first-child {
+        border-right: none;
+        max-width: initial;
+    }
+
+    .tournament-info > :last-child {
+        padding: 12px 12px 12px 0;
+    }
+
+    .additional-info > span {
+        font-size: 18px;
+    }
+
+    .stages-content > .section-title {
+        padding: 0 20px;
+    }
+
+    .stages-content > .section-title > h2  {
+        font-size: 36px;
+    }
+
+    .stages-content > .section-title span {
+        width: auto;
+        display: block;
+        position: static;
+        margin-top: 12px;
+    }
+
+    .slider-wrapper,
+    .stages-slider-wrapper,
+    .participants__slider,
+    .stages-slider {
+        overflow: initial;
+        overflow-x: clip;
+    }
+
+    .participants-content .section-title {
+        padding: 0 20px;
+    }
+
+    .participants-content .section-title h2 {
+        font-size: 36px;
+    }
+
+    .participants__slider {
+        transform: translateX(-424px);
+    }
+
+    .participants-content .section-title .slider-btns {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .participants-content {
+        padding-bottom: 180px;
+    }
+
+    .footer {
+        padding: 40px 20px;
+    }
+
+    .stages-content > .section-title + div {
+        margin-top: 148px;
+    }
+}
