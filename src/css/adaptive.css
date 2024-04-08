@@ -23,6 +23,10 @@
     .tournament-info > :last-child {
         padding: 12px 12px 12px 0;
     }
+
+    .stages-grid .stage-card__content > span {
+        word-break: break-all;
+    }
 }
 
 @media screen and (max-width: 790px) {
