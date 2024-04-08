@@ -46,11 +46,6 @@
         object-fit: contain;
     }
 
-    .header__content p:nth-of-type(-n + 2) {
-        font-size: 36px;
-        line-height: 40px;
-    }
-
     .header__content p:nth-of-type(1) {
         margin-top: 40px;
     }
@@ -165,5 +160,12 @@
 
     .stages-content > .section-title + div {
         margin-top: 148px;
+    }
+}
+
+@media screen and (max-width: 579px) {
+    .header__content p:nth-of-type(-n + 2) {
+        font-size: 36px;
+        line-height: 40px;
     }
 }
