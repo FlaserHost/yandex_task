@@ -482,7 +482,7 @@ button {
 }
 
 .participants__slider,
-.stages-slider {
+.stages-content .slider-thumb {
     display: flex;
     gap: 20px;
     overflow: hidden;
@@ -490,8 +490,12 @@ button {
 }
 
 .stages-slider {
-    gap: 0;
     height: 400px;
+}
+
+.stages-content .slider-thumb {
+    gap: 0;
+    transition: .3s;
 }
 
 .stages-slider-wrapper .slider-nav-btns {
@@ -671,6 +675,10 @@ input[type="radio"]:checked + label {
 
 .stages-slide.animated {
     animation: stagesMover .295s;
+}
+
+.stages-content .slider-thumb {
+    display: flex;
 }
 
 .footer {
