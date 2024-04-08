@@ -168,7 +168,7 @@
     }
     
     .stages-grid .plane {
-        display: block;
+        display: none;
     }
 }
 
