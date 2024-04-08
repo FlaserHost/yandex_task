@@ -104,14 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            const radioBtns = stagesSlides.map((_, index) => `<input id="slide_${index + 1}" name="stages_bullet" type="radio" value="${index + 1}" ${index === 0 ? 'checked' : ''}><label for="slide_${index}"></label>`);
-
-            const startArray = stagesSlides.slice(0, 2);
+            const radioBtns = stagesSlides.map((_, index) => `<input id="slide_${index}" name="stages_bullet" type="radio" value="${index}" ${index === 0 ? 'checked' : ''}><label for="slide_${index}"></label>`);
 
             const slider = `<div class="stages-slider-wrapper">
                 <div class="stages-slider">
                     <div class="plane"></div>
-                    ${startArray.join('')}
+                    <div class="slider-thumb">
+                        ${stagesSlides.join('')}
+                    </div>
                 </div>
                 <div class="slider-nav-btns">
                         <button class="slider-btn prev end" data-direction="prev" type="button" disabled></button>
@@ -307,11 +307,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // слайдер с этапами
     try {
-        let nextStageSlide = 1;
+        let nextStageSlide = 0;
 
         const sliderWrapper = document.querySelector('.stages-slider-wrapper');
         const stagesSliderContainer = sliderWrapper.querySelector('.stages-slider');
         const stagesSliderBtns = sliderWrapper.querySelectorAll('.slider-btn');
+        const sliderThumb = stagesSliderContainer.querySelector('.stages-slider .slider-thumb');
+
         stagesSliderBtns.forEach(btn => {
             btn.addEventListener('click', e => {
                 const direction = e.target.dataset.direction;
@@ -321,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     stagesSliderBtns[0].classList.remove('end');
                     nextStageSlide++;
 
-                    if (nextStageSlide === stagesSlides.length) {
+                    if (nextStageSlide === stagesSlides.length - 1) {
                         e.target.disabled = true;
                         e.target.classList.add('end');
                     }
@@ -329,56 +331,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     const radio = sliderWrapper.querySelector(`input[type="radio"]#slide_${nextStageSlide}`);
                     radio.checked = true;
 
-                    const nextSlide = stagesSlides[nextStageSlide];
-                    stagesSliderContainer.insertAdjacentHTML('beforeend', nextSlide);
-
                     e.target.disabled = true;
 
-                    const firstSlide = stagesSliderContainer.querySelector('.stages-slide:first-of-type');
-                    firstSlide.style.marginLeft = '-375px';
+                    sliderThumb.style.transform = `translateX(-${nextStageSlide * 375}px)`;
 
                     setTimeout(() => {
-                        firstSlide.remove();
-
-                        if (nextStageSlide < stagesSlides.length) {
+                        if (nextStageSlide < stagesSlides.length - 1) {
                             e.target.disabled = false;
                         }
                     }, 300);
-                } else {
+                } else if (direction === 'prev') {
                     stagesSliderBtns[1].disabled = false;
                     stagesSliderBtns[1].classList.remove('end');
+
                     nextStageSlide--;
 
-                    if (nextStageSlide === 6) {
-                        nextStageSlide = 5;
-                    }
-
-                    if (nextStageSlide === 1) {
+                    if (nextStageSlide === 0) {
                         e.target.disabled = true;
                         e.target.classList.add('end');
                     }
 
-                    const prevSlide = stagesSlides[nextStageSlide];
-                    stagesSliderContainer.querySelector('.plane').insertAdjacentHTML('afterend', prevSlide);
-
-                    const firstSlide = stagesSliderContainer.querySelector('.stages-slide:first-of-type');
-                    firstSlide.classList.add('animated');
-
                     e.target.disabled = true;
 
-                    const lastSlide = stagesSliderContainer.querySelector('.stages-slide:last-of-type');
+                    sliderThumb.style.transform = `translateX(-${nextStageSlide * 375}px)`;
+
+                    const radio = sliderWrapper.querySelector(`input[type="radio"]#slide_${nextStageSlide}`);
+                    radio.checked = true;
 
                     setTimeout(() => {
-                        lastSlide.remove();
-                        firstSlide.classList.remove('animated');
-                        if (nextStageSlide > 1) {
+                        if (nextStageSlide > 0) {
                             e.target.disabled = false;
                         }
                     }, 290);
                 }
-
-                const radio = sliderWrapper.querySelector(`input[type="radio"]#slide_${nextStageSlide}`);
-                radio.checked = true;
             });
         });
     } catch (err) {}
