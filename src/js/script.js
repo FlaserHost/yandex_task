@@ -305,72 +305,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // слайдер с этапами
-    try {
-        let nextStageSlide = 0;
+    const setStageSlider = () => {
+        // слайдер с этапами
+        try {
+            let nextStageSlide = 0;
 
-        const sliderWrapper = document.querySelector('.stages-slider-wrapper');
-        const stagesSliderContainer = sliderWrapper.querySelector('.stages-slider');
-        const stagesSliderBtns = sliderWrapper.querySelectorAll('.slider-btn');
-        const sliderThumb = stagesSliderContainer.querySelector('.stages-slider .slider-thumb');
+            const sliderWrapper = document.querySelector('.stages-slider-wrapper');
+            const stagesSliderContainer = sliderWrapper.querySelector('.stages-slider');
+            const stagesSliderBtns = sliderWrapper.querySelectorAll('.slider-btn');
+            const sliderThumb = stagesSliderContainer.querySelector('.stages-slider .slider-thumb');
 
-        stagesSliderBtns.forEach(btn => {
-            btn.addEventListener('click', e => {
-                const direction = e.target.dataset.direction;
+            stagesSliderBtns.forEach(btn => {
+                btn.addEventListener('click', e => {
+                    const direction = e.target.dataset.direction;
 
-                if (direction === 'next') {
-                    stagesSliderBtns[0].disabled = false;
-                    stagesSliderBtns[0].classList.remove('end');
-                    nextStageSlide++;
+                    if (direction === 'next') {
+                        stagesSliderBtns[0].disabled = false;
+                        stagesSliderBtns[0].classList.remove('end');
+                        nextStageSlide++;
 
-                    if (nextStageSlide === stagesSlides.length - 1) {
-                        e.target.disabled = true;
-                        e.target.classList.add('end');
-                    }
-
-                    const radio = sliderWrapper.querySelector(`input[type="radio"]#slide_${nextStageSlide}`);
-                    radio.checked = true;
-
-                    e.target.disabled = true;
-
-                    sliderThumb.style.transform = `translateX(-${nextStageSlide * 375}px)`;
-
-                    setTimeout(() => {
-                        if (nextStageSlide < stagesSlides.length - 1) {
-                            e.target.disabled = false;
+                        if (nextStageSlide === stagesSlides.length - 1) {
+                            e.target.disabled = true;
+                            e.target.classList.add('end');
                         }
-                    }, 300);
-                } else if (direction === 'prev') {
-                    stagesSliderBtns[1].disabled = false;
-                    stagesSliderBtns[1].classList.remove('end');
 
-                    nextStageSlide--;
+                        const radio = sliderWrapper.querySelector(`input[type="radio"]#slide_${nextStageSlide}`);
+                        radio.checked = true;
 
-                    if (nextStageSlide === 0) {
                         e.target.disabled = true;
-                        e.target.classList.add('end');
-                    }
 
-                    e.target.disabled = true;
+                        sliderThumb.style.transform = `translateX(-${nextStageSlide * 375}px)`;
 
-                    sliderThumb.style.transform = `translateX(-${nextStageSlide * 375}px)`;
+                        setTimeout(() => {
+                            if (nextStageSlide < stagesSlides.length - 1) {
+                                e.target.disabled = false;
+                            }
+                        }, 300);
+                    } else if (direction === 'prev') {
+                        stagesSliderBtns[1].disabled = false;
+                        stagesSliderBtns[1].classList.remove('end');
 
-                    const radio = sliderWrapper.querySelector(`input[type="radio"]#slide_${nextStageSlide}`);
-                    radio.checked = true;
+                        nextStageSlide--;
 
-                    setTimeout(() => {
-                        if (nextStageSlide > 0) {
-                            e.target.disabled = false;
+                        if (nextStageSlide === 0) {
+                            e.target.disabled = true;
+                            e.target.classList.add('end');
                         }
-                    }, 290);
-                }
+
+                        e.target.disabled = true;
+
+                        sliderThumb.style.transform = `translateX(-${nextStageSlide * 375}px)`;
+
+                        const radio = sliderWrapper.querySelector(`input[type="radio"]#slide_${nextStageSlide}`);
+                        radio.checked = true;
+
+                        setTimeout(() => {
+                            if (nextStageSlide > 0) {
+                                e.target.disabled = false;
+                            }
+                        }, 290);
+                    }
+                });
             });
-        });
-    } catch (err) {}
+        } catch (err) {}
+    }
+
+    setStageSlider();
 
     window.addEventListener('resize', () => {
         stagesRenderer();
         viewportUpdateCounter();
         participantsSlidesRenderer();
+        setStageSlider();
     });
 });
