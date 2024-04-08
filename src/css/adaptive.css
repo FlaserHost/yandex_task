@@ -51,7 +51,6 @@
     }
 
     .header__content p:nth-of-type(3) {
-        text-align: left;
         margin: 24px 0 32px;
     }
 
@@ -167,5 +166,11 @@
     .header__content p:nth-of-type(-n + 2) {
         font-size: 36px;
         line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .header__content p:nth-of-type(3) {
+        text-align: left;
     }
 }
