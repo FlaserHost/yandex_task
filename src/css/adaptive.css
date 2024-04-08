@@ -162,6 +162,16 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+    .stages-grid .stage-card:last-of-type .stage-card__content {
+        padding-right: 0;
+    }
+    
+    .stages-grid .plane {
+        display: block;
+    }
+}
+
 @media screen and (max-width: 579px) {
     .header__content p:nth-of-type(-n + 2) {
         font-size: 36px;
